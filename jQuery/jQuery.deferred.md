@@ -11,4 +11,4 @@
 `jQuery.Deferred`引进了几种管理和调用回调的增强方式。特别的，`jQuery.Deferred()`提供灵活的方式去提供多个回调，并且这些回调能被调用，不管原来的回调分发是否已经触发了。jQuery Deferred基于[CommonJS Promises/A](http://wiki.commonjs.org/wiki/Promises/A)设计。    
 
 用于理解Deferred的一个模型，就是想象它是一个可链式调用函数的包装。`deferred.then()`、`deferred.always()`、`deferred.done()`和`deferred.fail()`方法指定了被调用的函数，并且`deferred.resolve(args)`或`deferred.reject(arts)`方法使用你提供的参数“调用”函数。一旦Deferred被resolved或rejected，它的状态就保持不变了。`deferred.resolve()`的第二个调用，被忽略了。如果更多的函数通过`deferred.then()`添加，例如，在Deferred被resolved后，它们会使用之前提供的参数被立即调用。    
-  在大多数情况下，一个jQuery API能返回一个Deferred或promise兼容的对象，例如`jQuery.ajax()`或`jQuery.when()`，你将只需要使用`deferred.then()`，`deferred.doan()`和`deferred.fail()`方法，去添加回调到Deferred的队列里。API调用的内部或者创建Deferred的代码，同一时间点，将在deferred对象上调用`deferred.resolve()`或`deferred.reject()`，对应的回调也会运行。
+  在大多数情况下，一个jQuery API能返回一个Deferred或promise兼容的对象，例如`jQuery.ajax()`或`jQuery.when()`，你将只需要使用`deferred.then()`，`deferred.done()`和`deferred.fail()`方法，去添加回调到Deferred的队列里。API调用的内部或者创建Deferred的代码，同一时间点，将在deferred对象上调用`deferred.resolve()`或`deferred.reject()`，对应的回调也会运行。
